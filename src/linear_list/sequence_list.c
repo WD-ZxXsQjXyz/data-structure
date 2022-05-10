@@ -53,7 +53,7 @@ bool SqListGetElem(const SqList *const l, const int i, ElemType *const eptr)
     return true;
 }
 
-int SqListLoacteElem(const SqList *const l, const ElemType e, bool (*compare_func)(const ElemType e1, const ElemType e2))
+int SqListLocateElem(const SqList *const l, const ElemType e, bool (*compare_func)(const ElemType e1, const ElemType e2))
 {
     for (int i = 1; i <= l->length; ++i)
         if (compare_func(e, *(l->elem + i - 1)))
@@ -63,7 +63,7 @@ int SqListLoacteElem(const SqList *const l, const ElemType e, bool (*compare_fun
 
 bool SqListPriorElem(const SqList *const l, const ElemType e, ElemType *const eptr)
 {
-    int pos = SqListLoacteElem(l, e, Equal);
+    int pos = SqListLocateElem(l, e, Equal);
     if (0 == pos)
         return false;
     if (!SqListGetElem(l, pos - 1, eptr))
@@ -73,7 +73,7 @@ bool SqListPriorElem(const SqList *const l, const ElemType e, ElemType *const ep
 
 bool SqListNextElem(const SqList *const l, const ElemType e, ElemType *const eptr)
 {
-    int pos = SqListLoacteElem(l, e, Equal);
+    int pos = SqListLocateElem(l, e, Equal);
     if (0 == pos)
         return false;
     if (!SqListGetElem(l, pos + 1, eptr))
@@ -134,7 +134,7 @@ bool SqListUnion(const SqList *const la, const SqList *const lb, SqList *const l
     {
         if (!SqListGetElem(la, i + 1, &e))
             return false;
-        if (0 == SqListLoacteElem(lb, e, Equal))
+        if (0 == SqListLocateElem(lb, e, Equal))
         {
             if (!SqListInsert(lc, SqListLength(lc) + 1, e))
                 return false;

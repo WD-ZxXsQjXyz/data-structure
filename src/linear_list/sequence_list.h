@@ -28,7 +28,7 @@ int SqListLength(const SqList *const l);
 
 bool SqListGetElem(const SqList *const l, const int i, ElemType *const eptr);
 
-int SqListLoacteElem(const SqList *const l, const ElemType e, bool (*compare_func)(const ElemType e1, const ElemType e2));
+int SqListLocateElem(const SqList *const l, const ElemType e, bool (*compare_func)(const ElemType e1, const ElemType e2));
 
 bool SqListPriorElem(const SqList *const l, const ElemType e, ElemType *const eptr);
 
